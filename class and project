@@ -1,0 +1,64 @@
+#include<iostream>
+#include<string>
+using namespace std;
+const int N=5;
+
+class student{
+	private:
+		string snum;
+		int score;
+	public:
+		student(string sn,int sc);
+		void max(student *p);
+		void display(student *p);
+};
+
+student::student(string sn,int sc)
+{
+	snum=sn;
+	score=sc;
+}
+
+void student::max(student *p)
+{
+	student St("aa00000",00);
+	student *s=&St;
+	*s=*p;
+	for(int i=0;i<N;i++)
+	{
+		p=p+i;
+		if(s->score<p->score)
+		{
+			*s=*p;
+		}
+	}
+	cout<<"The students` snum which has highest score:"<<s->snum<<endl;
+}
+
+void student::display(student *p)
+{
+	for(int i=0;i<N;i++)
+	{
+		if(i%2==0)
+		{
+			cout<<"The students` date which squense number is odd number:"<<endl; 
+			cout<<(p+i)->snum<<"  "<<(p+i)->score<<endl;
+		}
+	}
+}
+
+int main()
+{
+	student st[N]={
+			student("jk10000",62);
+			student("jk10010",51);
+			student("jk10011",84);
+			student("jk10100",95);
+			student("jk10101",73)
+	};
+	student *l=st;
+	l->display(l);
+	l->max(l);
+	
+	return 0;
+}
